@@ -1,0 +1,47 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+    <span class="name">PIDMR</span>
+    <div class="details">
+        <a href="mailto:pasadenaidmr@gmail.com">pasadenaidmr@gmail.com</a>
+        <a href="tel:+13862432856">386-243-2856</a>
+        <a href="https://www.facebook.com/pidmr.org">Facebook</a>
+        <a href="https://www.youtube.com/@pasadenainstituteofdivinem5316">Youtube</a>
+        <span>© {year}</span>
+    </div>
+</footer>
+
+<style> 
+    .site-footer {
+        background: var(--navy);
+        color: #C9D1E0;
+        padding:40px 16px;
+        display: flex; 
+        flex-direction:column;
+        gap:16px;
+    }
+
+    .name {
+        font-family:var(--serif);
+        font-size:22px;
+        color: #FFFFFF;
+    }
+
+    .details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 28px;
+    }
+
+    .details a{ color: #FFFFFF;}
+
+    @media(min-width: 768px){
+        .site-footer { 
+            flex-direction: row; 
+            justify-content: space-between;
+            padding: 48px 64px;
+        }
+    }
+</style>
