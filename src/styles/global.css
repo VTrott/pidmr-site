@@ -25,5 +25,32 @@ main{
     flex:1; 
 }
 
-h1,h2 { font-family: var(--serif);font-weight: 400;}
-a { color: var(--navy); }
+h1,h2 { 
+    font-family: var(--serif);
+    font-weight: 400;
+}
+a { 
+    color: var(--navy); 
+}
+
+.container {
+    width:100%;
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+@media (min-width:768px){
+    .container{
+        padding:0 64px;
+    }
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6B5A1E;
+}

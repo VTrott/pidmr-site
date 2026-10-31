@@ -1,0 +1,101 @@
+<section class="hero">
+    <div class="container hero-inner">
+        <p class="kicker">A school, not a church · Since 1930 </p>
+        <h1> Pasadena Institute of Divine Metaphysical Research </h1>
+        <p class="motto"> Speak the Truth </p>
+        <div class="buttons">
+            <a href="/calendar" class="button gold"> See when we meet </a>
+            <a href="/lectures" class ="button outline"> Watch lectures</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero{
+        background:var(--navy);
+        padding: 64px 0 72px;
+    }
+
+    .hero-inner{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap:18px;
+    }
+
+    .kicker {
+        margin:0;
+        color: var(--gold);
+        font-size: 12px; 
+        font-weight: 600;
+        letter-spacing:2px;
+        text-transform: uppercase;
+    }
+
+    h1 {
+        margin: 0; 
+        max-width: 920px;
+        color:#FFFFFF;
+        font-size: 36px; 
+        line-height: 1.15; 
+    }
+
+    .motto {
+        margin: 0; 
+        color: #C9D1E0;
+        font-family: var(--serif);
+        font-style:italic; 
+        font-size: 19px;
+    }
+
+    .buttons {
+        display:flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    .button {
+        padding: 16px 28px;
+        border-redius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+    }
+    .gold {
+        background: var(--gold);
+        color: var(--navy);
+    }
+
+    .outline {
+        border: 1.5px solid #FFFFFF;
+        color: #FFFFFF; 
+    }
+
+    @media(min-width:768px) {
+        .hero {
+            padding: 104px 0 112px;
+        }
+
+        .kicker{
+            font-size: 14px;
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            font-size: 64px; 
+            line-height:1.1;
+        }
+        .motto {
+            font-size: 22px;
+        }
+
+        .buttons {
+            flex-direction: row; 
+            justify-content: center;
+            width: auto;
+        }
+    }
+</style>

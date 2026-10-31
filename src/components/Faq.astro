@@ -1,0 +1,121 @@
+---
+import { faqs } from "../data/faq.js"
+
+const homeFaqs = faqs.filter((item) => item.onHome);
+---
+<section class = "faq">
+    <div class=" container grid">
+        <div>
+            <h2> Questions people ask</h2>
+            <a href ="/faq" class="all"> See all questions → </a>
+        </div>
+        <div>
+            {homeFaqs.map((item)=>(
+                <details>
+                    <summary>{item.question}</summary>
+                    <p class="headline">{item.headline}</p>
+                    <div class="answer" set:html={item.body} />
+                </details>
+            ))}
+        </div>
+    </div>
+</section>
+<style>
+    .faq {
+        background: var(--cream);
+        padding: 56px 0;
+    }
+    .grid {
+        display: grid;
+        gap: 16px;
+    }
+    h2 {
+        margin: 0;
+        color: var(--navy);
+        font-size: 30px;
+        line-height:1.2;
+    }
+
+    details {
+        border-bottom: 1px solid #D6D0C2; 
+    }
+
+    summary {
+        display: flex;
+        justify-content:space-between; 
+        align-items: center;
+        gap: 16px;
+        padding: 18px 0;
+        cursor:pointer;
+        font-size: 17px;
+        font-weight:500;
+        color: var(--navy);
+        list-style:none; 
+    }
+
+    summary::webkit-details-marker {
+        display: none;
+    }
+
+    summary::after {
+        content:"+";
+        font-size:24px;
+        color: #6B5A1E;
+    }
+
+    details[open] summary::after { 
+        content:"-";
+    }
+
+    @media (min-width:768px) {
+        .faq{
+            padding: 96px 0;
+        }
+        .grid{
+            grid-column: 1fr 2fr;
+            gap: 80px;
+        }
+        h2 {
+            font-size:40px;
+        }
+        summary {
+            font-size: 19px;
+            padding: 24px 0;
+        }
+    }
+
+    .all {
+        display: inline-block;
+        margin-top:12px;
+        font-weight:600;
+    }
+    .headline {
+        margin: 0 0 8px; 
+        font-family: var(--serif);
+        font-size: 19px;
+        line-height:1.4;
+        color: var(--navy);
+    }
+    .answer :global(p){
+        margin: 0 0 14px;
+        font-size: 16px; 
+        line-height: 1.7;
+        color: #3A4252;
+    }
+    .answer :global(blockquote) {
+        margin: 0 0 14px; 
+        padding-left:16px;
+        border-left: 3px solid #D6D0C2;
+        font-family: var(--serif);
+        font-style: italic;
+    }
+    .answer :global(strong){
+        color: #A8322D;
+    }
+    .answer :global(cite){
+        display:block; 
+        margin-bottom: 18px;
+        font-size: 14px; 
+        color: var(--muted);
+    }
+</style>

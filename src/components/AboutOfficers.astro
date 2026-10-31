@@ -1,0 +1,125 @@
+---
+const officers = [
+    { name: "Dr. Benin & Lynn- Della Trotter", role: "President"},
+    { name: "Dr. David Hayes", role: "Vice President"},
+    { name: "Dr. Lisa & Antoine Irvis", role: "Secretary / Treasurer "}
+];
+---
+<section class = "about">
+    <div class="container grid">
+        <div class="intro">
+            <p class ="eyebrow"> About our class </p>
+            <h2> Founded on a vision given in 1930 </h2>
+            <p> Our school began with a divine vision given to our founder,
+                Dr. Henry C. Kinley, in Ohio. Today we study the scriptures 
+                together, in person and on Zoom. 
+            </p>
+            <a href="/about" class="more">Read our history →</a>        
+        </div>
+
+        <div>
+            <p class="eyebrow">Our officers </p>
+            <ul class="officers">
+               {officers.map((officer) => 
+               <li>
+                <div class="photo" aria-hidden="true"></div>
+                <div>
+                    <p class="name">{officer.name}</p>
+                    <p class="role">{officer.role}</p>
+                </div>
+               </li>
+            )}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<style> 
+    .about {
+        padding: 56px 0;
+    }
+
+    .grid {
+        display: grid;
+        gap:48px; 
+    }
+
+    .intro {
+        display:flex;
+        flex-direction: column;
+        gap: 14px; 
+    }
+
+    h2 {
+        margin: 0; 
+        color: var(--navy);
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    .intro p:not(.eyebrow) {
+        margin: 0;
+        font-size: 17px; 
+        line-height:1.7;
+        color: #3A4252;
+    }
+
+    .more {
+        font-weight:600;       
+    }
+
+    .officers { 
+        list-style: none;
+        margin: 8px 0 0 ;
+        padding: 0;
+    }
+    
+    .officers li {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid #E5E1D6; 
+    }
+
+    .officers li:last-child {
+        border-bottom: none;
+    }
+    .photo {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0; 
+        border-radius: 50%; 
+        background: #E8E4DA;
+    }
+    .name {
+        margin: 0; 
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--muted);
+    }
+
+    .role {
+        margin: 2px 0 0 ;
+        font-size: 14px;
+        color: var(--muted);
+    }
+
+    @media (min-width:768px){
+        .about {
+            padding: 96px 0;
+        }
+
+        .grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+        h2 {
+            font-size: 40px;
+        }
+        .photo { 
+            width: 72px; 
+            height: 72px;
+        }
+    }
+</style>
