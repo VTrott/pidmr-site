@@ -1,0 +1,65 @@
+---
+const officers = [
+  { name: "Dr. Benin & Lynn-Della Trotter", role: "President" },
+  { name: "Dr. David Hayes", role: "Vice President" },
+  { name: "Dr. Lisa & Antoine Irvis", role: "Secretary / Treasurer" },
+];
+---
+<section class="officers">
+  <div class="container">
+    <p class="eyebrow">Leadership</p>
+    <h2>Our officers</h2>
+
+    <ul class="list">
+      {officers.map((officer) => (
+        <li>
+          <div class="portrait" aria-hidden="true"></div>
+          <div>
+            <p class="name">{officer.name}</p>
+            <p class="role">{officer.role}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .officers {
+     padding: 64px 0; 
+    }
+  h2 {
+     margin: 12px 0 16px; color: var(--navy); font-size: 32px;
+    }
+
+  .list {
+     list-style: none; margin: 0; padding: 0; 
+    }
+
+  .list li {
+     display: flex; 
+     align-items: center; 
+     gap: 16px;
+     padding: 12px 0; border-bottom: 1px solid #E5E1D6;
+  }
+  .list li:last-child { border-bottom: none; }
+  .portrait { width: 72px; height: 72px; flex-shrink: 0; border-radius: 4px; background: #E8E4DA; }
+  .name { margin: 0; font-size: 17px; font-weight: 600; color: var(--navy); }
+  .role {
+    margin: 4px 0 0; color: var(--gold-text);
+    font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  @media (min-width: 768px) {
+    .officers { padding: 112px 0; }
+    h2 { font-size: 44px; margin-bottom: 48px; }
+    .list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .list li {
+      flex-direction: column; align-items: stretch; gap: 14px;
+      padding: 0; border: none;
+    }
+    .portrait { width: 100%; height: auto; aspect-ratio: 1 / 1; }
+    .name { font-size: 20px; }
+    .role { font-size: 13px; letter-spacing: 2px; }
+  }
+</style>
