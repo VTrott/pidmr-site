@@ -1,121 +1,66 @@
 ---
-import { faqs } from "../data/faq.js"
+import { faqs } from "../data/faq.js";
 
 const homeFaqs = faqs.filter((item) => item.onHome);
 ---
-<section class = "faq">
-    <div class=" container grid">
-        <div>
-            <h2> Questions people ask</h2>
-            <a href ="/faq" class="all"> See all questions → </a>
-        </div>
-        <div>
-            {homeFaqs.map((item)=>(
-                <details>
-                    <summary>{item.question}</summary>
-                    <p class="headline">{item.headline}</p>
-                    <div class="answer" set:html={item.body} />
-                </details>
-            ))}
-        </div>
+<section class="faq">
+  <div class="container grid">
+    <div>
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions people ask</h2>
+      <a href="/faq" class="all">See all questions →</a>
     </div>
+
+    <div>
+      {homeFaqs.map((item) => (
+        <details>
+          <summary>{item.question}</summary>
+          <div class="answer">
+            <p class="headline">{item.headline}</p>
+            <div set:html={item.body} />
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
 </section>
+
 <style>
-    .faq {
-        background: var(--cream);
-        padding: 56px 0;
-    }
-    .grid {
-        display: grid;
-        gap: 16px;
-    }
-    h2 {
-        margin: 0;
-        color: var(--navy);
-        font-size: 30px;
-        line-height:1.2;
-    }
+  .faq { background: var(--navy); padding: 64px 0; color: #E6EAF2; }
+  .grid { display: grid; gap: 16px; }
+  .faq .eyebrow { color: var(--gold); }
+  h2 { margin: 8px 0 0; color: #FFFFFF; font-size: 30px; line-height: 1.15; }
+  .all { display: inline-block; margin-top: 12px; color: var(--gold); font-weight: 600; }
 
-    details {
-        border-bottom: 1px solid #D6D0C2; 
-    }
+  details { border-bottom: 1px solid #2C3F66; }
+  summary {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 18px 0; cursor: pointer; list-style: none;
+    font-size: 17px; font-weight: 500; color: #FFFFFF;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; font-size: 26px; color: var(--gold);
+    transition: transform 0.2s;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
 
-    summary {
-        display: flex;
-        justify-content:space-between; 
-        align-items: center;
-        gap: 16px;
-        padding: 18px 0;
-        cursor:pointer;
-        font-size: 17px;
-        font-weight:500;
-        color: var(--navy);
-        list-style:none; 
-    }
+  .answer { padding-bottom: 18px; font-size: 16px; line-height: 1.7; }
+  .headline { margin: 0 0 12px; font-family: var(--serif); font-size: 18px; line-height: 1.4; color: #FFFFFF; }
+  .answer :global(p) { margin: 0 0 12px; }
+  .answer :global(blockquote) {
+    margin: 0 0 12px; padding-left: 16px;
+    border-left: 3px solid var(--gold); color: #C9D1E0;
+  }
+  .answer :global(cite) { font-size: 14px; font-style: normal; color: var(--gold); }
+  .answer :global(strong) { color: #FFFFFF; }
+  .answer :global(a) { color: var(--gold); }
 
-    summary::webkit-details-marker {
-        display: none;
-    }
-
-    summary::after {
-        content:"+";
-        font-size:24px;
-        color: #6B5A1E;
-    }
-
-    details[open] summary::after { 
-        content:"-";
-    }
-
-    @media (min-width:768px) {
-        .faq{
-            padding: 96px 0;
-        }
-        .grid{
-            grid-column: 1fr 2fr;
-            gap: 80px;
-        }
-        h2 {
-            font-size:40px;
-        }
-        summary {
-            font-size: 19px;
-            padding: 24px 0;
-        }
-    }
-
-    .all {
-        display: inline-block;
-        margin-top:12px;
-        font-weight:600;
-    }
-    .headline {
-        margin: 0 0 8px; 
-        font-family: var(--serif);
-        font-size: 19px;
-        line-height:1.4;
-        color: var(--navy);
-    }
-    .answer :global(p){
-        margin: 0 0 14px;
-        font-size: 16px; 
-        line-height: 1.7;
-        color: #3A4252;
-    }
-    .answer :global(blockquote) {
-        margin: 0 0 14px; 
-        padding-left:16px;
-        border-left: 3px solid #D6D0C2;
-        font-family: var(--serif);
-        font-style: italic;
-    }
-    .answer :global(strong){
-        color: #A8322D;
-    }
-    .answer :global(cite){
-        display:block; 
-        margin-bottom: 18px;
-        font-size: 14px; 
-        color: var(--muted);
-    }
+  @media (min-width: 768px) {
+    .faq { padding: 104px 0; }
+    .grid { grid-template-columns: 1fr 2fr; gap: 80px; }
+    h2 { font-size: 40px; }
+    summary { font-size: 19px; padding: 24px 0; }
+    .headline { font-size: 20px; }
+  }
 </style>
