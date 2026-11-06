@@ -1,7 +1,9 @@
 :root { 
     --navy: #13223F;
+    --navy-dark:#0B1730;
     --navy-line: #22355C;
     --gold: #D4A72C; 
+    --gold-text:#6B5A1E;
     --cream: #F4F1EA;
     --ink: #1F2633;
     --muted: #5A6273; 
@@ -44,13 +46,17 @@ a {
     .container{
         padding:0 64px;
     }
+    .eyebrow{
+        font-size: 13px; 
+        letter-spacing: 3px;
+    }
 }
 
 .eyebrow {
     margin: 0;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: #6B5A1E;
+    color: var(--gold-text);
 }
