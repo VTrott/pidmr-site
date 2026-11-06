@@ -1,0 +1,56 @@
+---
+const milestones = [
+    { year: "1930", text:"Founded in Ohio by Dr.Henry C. Kinley"},
+    { year:"1932", text: "Incorporated in Springfield, Ohio"},
+    {year:"1991", text: "Teaching in Florida under Dr.Glenn Kinley"},
+];
+---
+
+<section class="milestones" aria-label="Our history in brief">
+    <div class="container grid">
+        {milestones.map((item) => (
+            <div class="milestone">
+                <span class="year">{item.year}</span>
+                <span class="text">{item.text}</span>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    /*Phone hidden*/
+    .milestones {
+        display:none;
+    }
+
+    /* Desktop */
+    @media (min-width: 768px){
+     .milestones {
+        display:block;
+        background:var(--cream);
+        padding: 40px 0; 
+     }
+     .grid {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 32px;
+     }
+     .milestone {
+        display:flex;
+        flex-direction: column;
+        gap: 6px;
+        border-left:4px solid var(--gold);
+        padding-left: 20px;
+     }
+     .year{
+        font-family: var(--serif);
+        font-size: 44px;
+        line-height: 1;
+        color: var(--navy);
+     }
+     .text{
+        font-size:15px;
+        color: #3A4252;
+     }
+    }
+</style>

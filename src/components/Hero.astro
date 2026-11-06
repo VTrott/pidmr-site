@@ -2,7 +2,10 @@
     <div class="container hero-inner">
         <p class="kicker">A school, not a church · Since 1930 </p>
         <h1> Pasadena Institute of Divine Metaphysical Research </h1>
-        <p class="motto"> Speak the Truth </p>
+        <p class="motto"> Study the scriptures. Speak the Truth </p>
+        <p class="intro">
+            Classes open to anyone who wants to know Yahweh as he really is, in person and on Zoom.
+        </p>
         <div class="buttons">
             <a href="/calendar" class="button gold"> See when we meet </a>
             <a href="/lectures" class ="button outline"> Watch lectures</a>
@@ -21,15 +24,15 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap:18px;
+        gap:16px;
     }
 
     .kicker {
         margin:0;
         color: var(--gold);
         font-size: 12px; 
-        font-weight: 600;
-        letter-spacing:2px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
         text-transform: uppercase;
     }
 
@@ -37,16 +40,23 @@
         margin: 0; 
         max-width: 920px;
         color:#FFFFFF;
-        font-size: 36px; 
-        line-height: 1.15; 
+        font-size: 34px; 
+        line-height: 1.12; 
     }
 
     .motto {
         margin: 0; 
-        color: #C9D1E0;
+        color: var(--gold);
         font-family: var(--serif);
         font-style:italic; 
-        font-size: 19px;
+        font-size: 20px;
+    }
+    .intro {
+        margin:0;
+        max-width:520px;
+        font-size: 17px;
+        line-height:1.6;
+        color: #C9D1E0;
     }
 
     .buttons {
@@ -58,11 +68,15 @@
     }
 
     .button {
-        padding: 16px 28px;
-        border-redius: 6px;
+        padding: 16px;
+        border-radius: 4px;
         font-weight: 600;
         text-decoration: none;
         text-align: center;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
     }
     .gold {
         background: var(--gold);
@@ -70,32 +84,46 @@
     }
 
     .outline {
-        border: 1.5px solid #FFFFFF;
+        border: 2px solid #FFFFFF;
         color: #FFFFFF; 
+        padding: 14px;
     }
 
     @media(min-width:768px) {
         .hero {
-            padding: 104px 0 112px;
+            padding: 112px 0 120px;
+        }
+        .hero-inner{
+            gap: 24px;
         }
 
         .kicker{
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 3px;
         }
 
         h1 {
-            font-size: 64px; 
-            line-height:1.1;
+            font-size: 60px; 
+            line-height:1.08;
         }
+
         .motto {
-            font-size: 22px;
+            font-size: 26px;
+        }
+        .intro { 
+            font-size: 19px;
         }
 
         .buttons {
             flex-direction: row; 
             justify-content: center;
             width: auto;
+        }
+        .gold {
+            padding: 16px 28px;
+        }
+        .outline {
+            padding:14px 26px;
         }
     }
 </style>
