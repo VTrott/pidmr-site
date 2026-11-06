@@ -1,13 +1,20 @@
 ---
+import { undefined } from "astro:schema";
+
 const zoomLink = "https://us06web.zoom.us/j/3865622521?pwd=JFo4ECPFwXdAWbMUBa9gUGdTFvI5p6.1#success";
 const links = [
 { href:"/about", label: "About" },
 { href:"/lecture", label: "Lectures" },
 { href:"/calendar", label: "Calendar" },
 { href:"/faq", label: "FAQ" },
-{ href:"/contact", label: "Contact" }
-]
+{ href:"/contact", label: "Contact", phoneOnly:true }
+];
 ---
+
+<div class ="top-bar">
+    <a href="/calendar">Calendar</a>
+    <a href="/contact">Contact</a>
+</div>
 <header class="site-header">
     <a href="/" class="logo">
         <svg width ="36" height ="36" viewBox ="0 0 40 40" aria-hidden="true">
@@ -17,7 +24,11 @@ const links = [
         <span>PIDMR</span>
     </a>
     <nav id="main-nav" aria-label="Main">
-        {links.map((link) => <a href={link.href}>{link.label}</a>)}
+       {links.map((link) => (
+      <a href={link.href} class={link.phoneOnly ? "phone-only" : undefined}>
+        {link.label}
+      </a>
+    ))}
     </nav>
 
     <div class="actions">
@@ -31,10 +42,16 @@ const links = [
 </header>
 
 <style>
+    /*---- Phone ----*/
+    .top-bar {
+        display:none;
+    }
+
     .site-header {
         background: var(--navy);
+        border-bottom: 3px solid var(--gold);
         padding: 0 16px;
-        min-height: 64px;
+        min-height: 68px;
         display: flex;
         align-items: center;
         justify-content: space-between; 
@@ -48,25 +65,47 @@ const links = [
         color: var(--gold);
         text-decoration:none;
     }
+
+    .logo svg {
+        width:34px;
+        height:34px;
+    }
+
     .logo span {
         font-family: var(--serif);
-        font-size: 22px;
+        font-size: 20px;
+        letter-spacing: 0.5px;
         color: #FFFFFF;
     }
 
     .actions{ 
         display: flex; 
         align-items:center;
-        gap:8px;
+        gap:6px;
     }
 
     .zoom-button{
         background: var(--gold);
         color: var(--navy); 
         padding:12px 14px; 
-        border-radius: 6px;
-        font-weight:600; 
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight:700; 
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
         text-decoration: none;
+    }
+
+    .menu-button{
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background:none;
+        border: none;
+        color: #FFFFFF;
+        cursor: pointer;
     }
     
     nav { 
@@ -84,17 +123,44 @@ const links = [
     nav a {
         color:#FFFFFF; 
         text-decoration: none;
-        font-weight:500;
+        font-size: 14px;
+        font-weight: 600;
         padding: 14px 0;
+        text-transform: uppercase;
         border-top: 1px solid var(--navy-line)
     }
 
 
     /* Wider than a phone: show the menu */
-    @media (min-width:768px) {
+    @media (min-width:960px) {
+        .top-bar{
+            display: flex; 
+            justify-content: flex-end;
+            align-items: center;
+            gap: 28px;
+            height: 36px;
+            padding: 0 64px;
+            background: var(--navy-dark);
+        }
+        .top-bar a {
+            color:#C9D1E0;
+            text-decoration: none;
+            font-size:13px;
+            font-weight:500;
+        }
+
         .site-header { 
             padding: 0 64px;
-            min-height: 80px;
+            min-height: 84px;
+        }
+
+        .logo svg{
+            width:44px;
+            height: 44px;
+        }
+        .logo span{
+            font-size:26px;
+            letter-spacing:1px;
         }
 
         nav { 
@@ -102,16 +168,24 @@ const links = [
             order:0;
             width:auto;
             flex-direction: row;
-            gap:28px;
+            gap:36px;
             padding:0;
+            margin-left: auto; 
+            margin-right: 36px;
         }
         nav a {
-            color:#E6EAF2;
             padding:0; 
             border: none;
         }
+
+        .phone-only{
+            display:none;
+        }
         .menu-button{
             display:none;
+        }
+        .zoom-button {
+            padding: 12px 18px;
         }
     }
 </style>
