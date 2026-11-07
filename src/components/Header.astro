@@ -1,127 +1,102 @@
 ---
 const zoomLink = "https://us06web.zoom.us/j/3865622521?pwd=JFo4ECPFwXdAWbMUBa9gUGdTFvI5p6.1#success";
+
+
 const links = [
-{ href:"/about", label: "About" },
-{ href:"/lecture", label: "Lectures" },
-{ href:"/calendar", label: "Calendar" },
-{ href:"/faq", label: "FAQ" },
-{ href:"/contact", label: "Contact" }
-]
+  { href: "/about", label: "About" },
+  { href: "/lectures", label: "Lectures" },
+  { href: "/calendar", label: "Calendar" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
+];
 ---
 <header class="site-header">
-    <a href="/" class="logo">
-        <svg width ="36" height ="36" viewBox ="0 0 40 40" aria-hidden="true">
-            <path d="M20 3 L36 30 L4 30 Z" fill="none" stroke="currentColor" stroke-width="2.5"/> 
-            <path d ="M20 37 L4 10 L36 10 Z" fill="none" stroke="currentColor" stroke-width="2.5 "/>
-        </svg>
-        <span>PIDMR</span>
-    </a>
-    <nav id="main-nav" aria-label="Main">
-        {links.map((link) => <a href={link.href}>{link.label}</a>)}
-    </nav>
+  <a href="/" class="logo">
+    <svg viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M20 3 L36 30 L4 30 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <path d="M20 37 L4 10 L36 10 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    </svg>
+    <span>PIDMR</span>
+  </a>
 
-    <div class="actions">
-        <a href={zoomLink} class="zoom-button">Join on Zoom</a>
-        <button class="menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" strike-linecap="round"/>
-            </svg>
-        </button>
-    </div>
+  <nav id="main-nav" aria-label="Main">
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+  </nav>
+
+  <div class="actions">
+    <a href={zoomLink} class="zoom-button">Join on Zoom</a>
+    <button class="menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
 </header>
 
 <style>
-    .site-header {
-        background: var(--navy);
-        padding: 0 16px;
-        min-height: 64px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between; 
-        flex-wrap: wrap;
-    }
+  /* ---------- Phone first ---------- */
+  .site-header {
+    background: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    padding: 0 16px;
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--gold); text-decoration: none;
+  }
+  .logo svg { width: 34px; height: 34px; }
+  .logo span { font-family: var(--serif); font-size: 20px; letter-spacing: 0.5px; color: #FFFFFF; }
 
-    .logo{
-        display:flex;
-        align-items: center;
-        gap: 10px;
-        color: var(--gold);
-        text-decoration:none;
-    }
-    .logo span {
-        font-family: var(--serif);
-        font-size: 22px;
-        color: #FFFFFF;
-    }
+  .actions { display: flex; align-items: center; gap: 6px; }
+  .zoom-button {
+    background: var(--gold); color: var(--navy);
+    padding: 12px 14px; border-radius: 4px;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+    text-transform: uppercase; text-decoration: none;
+  }
+  .menu-button {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: none; border: none; color: #FFFFFF; cursor: pointer;
+  }
 
-    .actions{ 
-        display: flex; 
-        align-items:center;
-        gap:8px;
-    }
+  nav { display: none; order: 3; width: 100%; flex-direction: column; padding-bottom: 12px; }
+  nav.open { display: flex; }
+  nav a {
+    color: #FFFFFF; text-decoration: none;
+    font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    padding: 14px 0; border-top: 1px solid var(--navy-line);
+  }
 
-    .zoom-button{
-        background: var(--gold);
-        color: var(--navy); 
-        padding:12px 14px; 
-        border-radius: 6px;
-        font-weight:600; 
-        text-decoration: none;
-    }
-    
-    nav { 
-        display: none;
-        order: 3;
-        width:100%;
-        flex-direction: column;
-        padding-bottom:12px
-    }
+  /* ---------- Wide screens ---------- */
+  @media (min-width: 1024px) {
+    .site-header { padding: 0 64px; min-height: 84px; }
+    .logo svg { width: 44px; height: 44px; }
+    .logo span { font-size: 26px; letter-spacing: 1px; }
 
-    nav.open{
-        display:flex;
+    nav {
+      display: flex; order: 0; width: auto; flex-direction: row;
+      gap: 36px; padding: 0;
+      margin-left: auto; margin-right: 36px;
     }
-
-    nav a {
-        color:#FFFFFF; 
-        text-decoration: none;
-        font-weight:500;
-        padding: 14px 0;
-        border-top: 1px solid var(--navy-line)
-    }
-
-
-    /* Wider than a phone: show the menu */
-    @media (min-width:768px) {
-        .site-header { 
-            padding: 0 64px;
-            min-height: 80px;
-        }
-
-        nav { 
-            display:flex;
-            order:0;
-            width:auto;
-            flex-direction: row;
-            gap:28px;
-            padding:0;
-        }
-        nav a {
-            color:#E6EAF2;
-            padding:0; 
-            border: none;
-        }
-        .menu-button{
-            display:none;
-        }
-    }
+    nav a { padding: 0; border: none; }
+    .menu-button { display: none; }
+    .zoom-button { padding: 12px 18px; }
+  }
 </style>
-<script>
-    const button = document.querySelector(".menu-button");
-    const nav = document.querySelector("#main-nav");
 
-    button?.addEventListener("click",()=>{
-        const isOpen = nav?.classList.toggle("open");
-        button.setAttribute("aria-expanded",String(isOpen));
-        button.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-    });
+<script>
+  const button = document.querySelector(".menu-button");
+  const nav = document.querySelector("#main-nav");
+
+  button?.addEventListener("click", () => {
+    const isOpen = nav?.classList.toggle("open");
+    button.setAttribute("aria-expanded", String(isOpen));
+    button.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  });
 </script>
